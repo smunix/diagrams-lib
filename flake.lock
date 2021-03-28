@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "locked": {
+        "lastModified": 1614513358,
+        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "master",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1616903901,
@@ -108,6 +124,20 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1616903901,
+        "narHash": "sha256-eUhQHO3oqoHucPBpSxD1q01RMUAaEVcBcJg1ojT8Ukc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "eab3dcf262cc256d1945e00cc43b6844a7d895b8",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1616866564,
         "narHash": "sha256-UnHMztF0fd4XPJlxesLgPNx2WKeHpqNtvff7USXOH4s=",
         "owner": "NixOS",
@@ -125,6 +155,7 @@
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "smunix-diagrams-core": "smunix-diagrams-core",
+        "smunix-diagrams-solve": "smunix-diagrams-solve",
         "smunix-monoid-extras": "smunix-monoid-extras_2"
       }
     },
@@ -146,6 +177,26 @@
         "owner": "smunix",
         "ref": "fix.diagrams",
         "repo": "diagrams-core",
+        "type": "github"
+      }
+    },
+    "smunix-diagrams-solve": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1616905435,
+        "narHash": "sha256-fsEXB6Kc5sA82Ci8sVek48XN2Sn6HtfGUqMPGCNPSW4=",
+        "owner": "smunix",
+        "repo": "diagrams-solve",
+        "rev": "14c862a7ac928ff6d4bbb8de7411888aa95e20f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "smunix",
+        "ref": "fix.diagrams",
+        "repo": "diagrams-solve",
         "type": "github"
       }
     },
@@ -171,8 +222,8 @@
     },
     "smunix-monoid-extras_2": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
-        "nixpkgs": "nixpkgs_4"
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1616899059,
