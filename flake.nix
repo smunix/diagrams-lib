@@ -20,7 +20,10 @@
             });
             {
               diagrams-lib = rec {
-                  package = overrideCabal (callCabal2nix "diagrams-lib" ./. {}) (o: { version = "${o.version}-${version}"; });
+                package = overrideCabal (callCabal2nix "diagrams-lib" ./. {
+                  inherit (smunix-diagrams-core.packages.${system}) diagrams-core;
+                  inherit (smunix-diagrams-solve.packages.${system}) diagrams-solve;
+                }) (o: { version = "${o.version}-${version}"; });
                   bench = mkApp { drv = package; exePath = "/bin/benchmarks-exe";};
                 };
             };
