@@ -6,10 +6,13 @@
     smunix-diagrams-core.url = "github:smunix/diagrams-core/fix.diagrams";
     smunix-diagrams-solve.url = "github:smunix/diagrams-solve/fix.diagrams";
   }; 
-  outputs = { self, nixpkgs, flake-utils, smunix-diagrams-core, smunix-diagrams-solve, ... }:
+  outputs = { self, nixpkgs, flake-utils,
+              smunix-diagrams-core, smunix-diagrams-solve, smunix-monoid-extras,
+              ...
+            }:
     with flake-utils.lib;
     with nixpkgs.lib;
-    eachSystem [ "x86_64-darwin" ] (system:
+    eachSystem [ "x86_64-linux" ] (system:
       let version = "${substring 0 8 self.lastModifiedDate}.${self.shortRev or "dirty"}";
           overlay = self: super:
             with self;
@@ -17,13 +20,11 @@
             with haskellPackages.extend (self: super: {
               inherit (smunix-diagrams-core.packages.${system}) diagrams-core;
               inherit (smunix-diagrams-solve.packages.${system}) diagrams-solve;
+              inherit (smunix-monoid-extras.packages.${system}) diagrams-solve;
             });
             {
               diagrams-lib = rec {
-                package = overrideCabal (callCabal2nix "diagrams-lib" ./. {
-                  inherit (smunix-diagrams-core.packages.${system}) diagrams-core;
-                  inherit (smunix-diagrams-solve.packages.${system}) diagrams-solve;
-                }) (o: { version = "${o.version}-${version}"; });
+                package = overrideCabal (callCabal2nix "diagrams-lib" ./. {}) (o: { version = "${o.version}-${version}"; });
                   bench = mkApp { drv = package; exePath = "/bin/benchmarks-exe";};
                 };
             };
