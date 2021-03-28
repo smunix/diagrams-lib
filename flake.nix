@@ -20,7 +20,7 @@
             with haskellPackages.extend (self: super: {
               inherit (smunix-diagrams-core.packages.${system}) diagrams-core;
               inherit (smunix-diagrams-solve.packages.${system}) diagrams-solve;
-              inherit (smunix-monoid-extras.packages.${system}) diagrams-solve;
+              inherit (smunix-monoid-extras.packages.${system}) monoid-extras;
             });
             {
               diagrams-lib = rec {
